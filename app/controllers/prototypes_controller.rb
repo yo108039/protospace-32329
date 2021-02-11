@@ -10,10 +10,10 @@ class PrototypesController < ApplicationController
   end
 
   def create
-    if Prototype.create(prototype_params)
-      binding.pry
+    @prototype = Prototype.new(prototype_params)
+    if @prototype.save
       redirect_to root_path
-   else
+    else
       render :new
     end
   end
